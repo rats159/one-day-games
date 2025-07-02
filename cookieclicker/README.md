@@ -1,4 +1,4 @@
-# Bun Run
+# Cookie Clicker
 cookie clicker clone
 
 ## Created at
