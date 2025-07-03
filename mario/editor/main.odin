@@ -62,8 +62,8 @@ write_and_save_level :: proc() {
             if (cell >> 2) & 1 == 0 {
                 append(&buffer, cell)
             } else {
-                fmt.printfln("%b, %d",cell,ent_count)
-                if ent_count == max(u8) {
+				append(&buffer, 0)
+				if ent_count == max(u8) {
                     panic("Too many entities! Max 255.")
                 }
                 ent_count += 1
@@ -73,6 +73,9 @@ write_and_save_level :: proc() {
             }
         }
     }
+
+	assert(len(buffer) == WIDTH * HEIGHT + 3)
+
     file, open_err := os.open("./level.bin", os.O_CREATE | os.O_RDWR)
     if open_err != nil {
         fmt.panicf("%v\n",open_err)
