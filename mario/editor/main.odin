@@ -1,6 +1,5 @@
 package main
 
-import "core:encoding/base32"
 import "core:fmt"
 import "core:math"
 import "core:math/linalg"
@@ -127,7 +126,7 @@ draw_world :: proc() {
 		raw_zoom = clamp(raw_zoom, 1, 4)
 		camera.zoom = math.pow(2, math.round(raw_zoom))
 	} else {
-		state.selected_tile += u8(rl.GetMouseWheelMove())
+		state.selected_tile -= u8(rl.GetMouseWheelMove())
 		if state.selected_tile < 0 do state.selected_tile += 16
 		if state.selected_tile >= 16 do state.selected_tile -= 16
 	}
