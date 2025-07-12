@@ -14,7 +14,8 @@ def format_datetime(dt):
     return dt.strftime(fmt).lower()
 
 name = sys.argv[1]
-shutil.rmtree(name)
+if os.path.isdir(name):
+    shutil.rmtree(name)
 os.mkdir(name)
 
 shutil.copyfile("./template/main.odin",f"./{name}/main.odin")
